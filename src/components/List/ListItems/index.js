@@ -1,11 +1,13 @@
 import React from "react";
+ 
 
-function ListItems({ deleteItems }) {
+function ListItems({ text, deleteItems, index }) {
   return (
-    
-    <ul><li></li></ul>
-    {/* <button onClick={deleteItems}>Delete</button> */}
-
+    <div>
+      <p>{text}</p>  
+      <button onClick={() => deleteItems(index)}> O </button>
+        
+    </div>
   );
 }
 
