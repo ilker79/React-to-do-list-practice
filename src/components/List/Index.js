@@ -3,9 +3,11 @@ import React from "react";
 function List({ myList }) {
   return (
     <div>
-      {myList.map((item, index) => (
-        <ul key={index}>{item}</ul>
-      ))}
+      <ul>
+        {myList.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
     </div>
   );
 }

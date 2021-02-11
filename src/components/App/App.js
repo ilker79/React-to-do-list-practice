@@ -1,35 +1,32 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./App.css";
-import Input from "../Input/index.js"
-import List from "../List/index.js"
-import ListItems from "../List/ListItems/index.js"
-
+import Input from "../Input/index";
+import List from "../List/index";
+import ListItems from "../List/ListItems/index";
 
 let myList = ["Wear a mask", "Wash your hands", "Stay home"];
 
 function App() {
-    const [text, setText ] = useState("");
-    const [ , setList] = useState(myList)
+  const [list, setList] = useState(myList);
 
-    function updateText(event) {
-        setText(event.target.value);
-    }
+  function addToList(text) {
+    let changedList = [...list, text];
+    setList(changedList);
+    console.log(list);
+  }
 
-    function addToList(text){
-        let changedList = [...myList, text];
-        setList(changedList);
-    }
+  function deleteItem(list, index) {
+    let updatedList = [...list.slice(0, index), ...list.slice(index)];
+    setList(updatedList);
+  }
 
-    return (
-        <div className="App">
-            <Input updateText={updateText} />
-            <List addToList={addToList} text={text} />
-            <ListItems myList={myList} />
-        </div>
-
-
-    );
-
+  return (
+    <div className="App">
+      <Input addToList={addToList} />
+      <List myList={myList} />
+      <ListItems myList={myList} deleteItem={deleteItem} />
+    </div>
+  );
 }
 
 export default App;
