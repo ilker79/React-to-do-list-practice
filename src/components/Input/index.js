@@ -1,9 +1,10 @@
-import "./App.css";
+import React from "react";
 
-function Input({ addToList, text }) {
+function Input({ addToList, updateText}) {
   return (
     <div className="input">
-        <button onClick={() => addToList(text)}>Add to List</button>
+      <input type="text" onChange={updateText} />
+        <button onClick={addToList}>Add to List</button>
     </div>
   );
 }
