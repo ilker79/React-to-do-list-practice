@@ -1,31 +1,34 @@
 import React, { useState } from "react";
 import "./App.css";
 import Input from "../Input/index";
-import List from "../List/index";
+import List from "../List/Index";
 // import ListItems from "../List/ListItems/index";
 
 let myList = ["Wear a mask", "Wash your hands", "Stay home"];
 
 function App() {
+  const [text, setText] = useState("");
   const [list, setList] = useState(myList);
 
-  function addToList(text) {
-    const changedList = [...list, text];
-    setList(changedList);
-    console.log(list);
+  function getText(e) {
+    let textValue = e.target.value;
+    setText(textValue);
   }
 
-  function deleteItem(index) {  // list in scope, but used 2x (shadowed)
-    const updatedList = [...list.slice(0, index), ...list.slice(index+1)];
-    setList(updatedList);
-    console.log(list);
+  function addToList() {
+    let addItemToList = [...list, text];
+    setList(addItemToList);
+    console.log(addItemToList);
+  }
+
+  function setLst(item) {
+    return setList(item);
   }
 
   return (
-    <div className="App"> 
-      <Input addToList={addToList} /> 
-      <List myList={myList} deleteItem={deleteItem} />
-      {/* <ListItems myList={myList} deleteItem={deleteItem} /> */}
+    <div>
+      <Input getText={getText} addButton={addToList} />
+      <List list={list} setLst={setLst} />
     </div>
   );
 }

@@ -1,16 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 
-
-function Input({ addToList }) {
-  const [text, setText] = useState("");
+function Input({ getText, addButton }) {
   return (
-    <div className="input">
-      <input
-        value={text}
-        type="text"
-        onChange={(e) => setText(e.target.value)}
-      />
-      <button onClick={() => addToList(text)}>Add to List</button>
+    <div>
+      <input onChange={getText} />
+      <button onClick={addButton}>Add To List</button>
     </div>
   );
 }
