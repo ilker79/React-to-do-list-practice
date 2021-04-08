@@ -1,34 +1,34 @@
 import React, { useState } from "react";
 import "./App.css";
 import Input from "../Input/index";
-import List from "../List/Index";
-// import ListItems from "../List/ListItems/index";
+import List from "../List/index";
 
-let myList = ["Wear a mask", "Wash your hands", "Stay home"];
+let toDoList = ["study", "sleep", "eat", "go for a walk"];
 
 function App() {
   const [text, setText] = useState("");
-  const [list, setList] = useState(myList);
+  const [list, setList] = useState(toDoList);
 
   function getText(e) {
     let textValue = e.target.value;
     setText(textValue);
   }
 
-  function addToList() {
+  function addToList(){
     let addItemToList = [...list, text];
     setList(addItemToList);
     console.log(addItemToList);
   }
 
-  function setLst(item) {
-    return setList(item);
+  function deleteItem(index){
+    let itemDeletedList = [...list.slice(0, index), ...list.slice(index+1)];
+    setList(itemDeletedList);
   }
 
   return (
     <div>
-      <Input getText={getText} addButton={addToList} />
-      <List list={list} setLst={setLst} />
+      <Input getText={getText} addButton={addToList}/>
+      <List list={list} deleteButton={deleteItem}/>
     </div>
   );
 }

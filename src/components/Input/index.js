@@ -1,6 +1,7 @@
 import React from "react";
 
 function Input({ getText, addButton }) {
+    
   return (
     <div>
       <input onChange={getText} />
